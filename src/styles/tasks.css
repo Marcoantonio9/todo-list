@@ -1,0 +1,42 @@
+.principal{
+
+}
+.area-texto{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.container-txt{
+  height: 100%;
+  width: 70%;
+  padding: 20px;
+  border: 1px solid #E9ECEF;
+  /* word-wrap: break-word; */
+  /* display: flex;
+  flex-wrap: nowrap; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.texto{
+  width: 80%;
+  word-wrap: break-word;
+}
+
+.fechar{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.icones{
+  font-size: 20px;
+}
+
+.icones:hover{
+  cursor: pointer;
+}
