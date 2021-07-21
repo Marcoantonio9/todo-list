@@ -1,5 +1,8 @@
 .principal{
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .area-texto{
   width: 100%;
@@ -25,9 +28,11 @@
 .texto{
   width: 80%;
   word-wrap: break-word;
+  font-weight: 300;
+  font-size: 20px;
 }
 
-.fechar{
+.area-icons{
   display: flex;
   align-items: center;
   gap: 25px;
@@ -39,4 +44,12 @@
 
 .icones:hover{
   cursor: pointer;
+}
+
+.icon-fechar{
+  color: red;
+}
+
+.txt-nenhuma-tarefa{
+  text-align: center;
 }

@@ -26,7 +26,7 @@ const Header = () => {
       </div>
       
       <form>
-        <input type="text" value={TaskContext.dadosLocal.task} id="task" onChange={handleChange}/>
+        <input type="text" value={TaskContext.dadosLocal.task || ''} id="task" onChange={handleChange}/>
         <button onClick={TaskContext.setDados}>Adicionar</button>
       </form>
     </div>

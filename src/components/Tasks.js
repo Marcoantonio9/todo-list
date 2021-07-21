@@ -24,28 +24,29 @@ const Tasks = () => {
 
 
   return (
-    <div class="principal">
-        {TaskContext.newTask.map((task) => (
+    <div className="principal">
+        {TaskContext.newTask.length === 0 && <h2 className="txt-nenhuma-tarefa">Nenhuma tarefa adicionava.</h2>}
+        {TaskContext.newTask && TaskContext.newTask.map((task, i) => (
           <>
-            <div class="area-texto">
-              <div class="container-txt">
-                <div class="texto">
+            <div className="area-texto" key={i}>
+              <div className="container-txt">
+                <div className="texto" style={{color: task.status ? 'green' : 'black', textDecoration: task.status ? 'line-through' : 'none'}}>
                   {task.task}
                 </div>
-                <div class="fechar">
-                  <div class="icones">
-                    <i class="fas fa-check"></i>
+                <div className="area-icons">
+                  <div className="icones">
+                    <i className="fas fa-check" style={{color: task.status ? 'green' : 'black'}} onClick={() => TaskContext.checkTask(task)}></i>
                   </div>
 
-                  <div class="icones">
-                    <i class="fas fa-times" onClick={() => TaskContext.deleteItem(task)}></i>
+                  <div className="icones">
+                    <i className="fas fa-times icon-fechar" onClick={() => TaskContext.deleteItem(task)}></i>
                   </div>
 
                 </div>
               </div>
             </div>
           </>
-        ))}
+        ))}        
     </div>
   )
 }

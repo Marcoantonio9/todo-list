@@ -17,41 +17,59 @@ export const GlobalTasks = ({children}) => {
     if(newTask.length > 0){
       localStorage.setItem('task', JSON.stringify(newTask))      
     }
-    console.log(newTask)
+
   }, [newTask])  
   
   function setDados(event){
     event.preventDefault()
     if(localStorage.getItem('task') == null){
-      //newTask.push(dadosLocal)
       setNewTask([...newTask, dadosLocal])
       localStorage.setItem('task', JSON.stringify(newTask))
 
     }else{
-      //newTask.push(dadosLocal)
-
       setNewTask([...newTask, dadosLocal])
-      // localStorage.setItem('task', JSON.stringify(newTask))
+      localStorage.setItem('task', JSON.stringify(newTask))
 
-    }    
+    }  
+
+    setDadosLocal({
+      task: '',
+      data: date.toLocaleDateString('pt-BR'),
+      hora: date.toLocaleTimeString(),
+      status: false
+    })  
   }
 
   function deleteItem(task){
-    newTask.splice(newTask.indexOf(task), 1)  
-    console.log(newTask)  
-    
-    let novoArray = newTask
-    setNewTask('')
-    console.log('novo: ', novoArray)
-    setNewTask([novoArray])
-    // // console.log('novo: ', novoArray)
-    // // setNewTask(...newTask, newTask)
+    const filtrarArray = newTask.filter((todo) => todo !== task)
+    setNewTask(filtrarArray)
+    if(newTask.length === 1){
+      let array = []
+      localStorage.setItem('task', JSON.stringify(array))
+      console.log(newTask.length)
+    }
+  }
 
+  function checkTask(task){
+    if(task.status === false){
+      task.status = !task.status
+      let newStatus = task
 
+      deleteItem()
+      localStorage.setItem('task', newStatus)
+      console.log('mudar para verdadeiro: ', newStatus)
+    }else if(task.status === true){
+      task.status = !task.status
+      let newStatus = task
+
+      deleteItem()
+      localStorage.setItem('task', newStatus)   
+      console.log('mudar para false: ', newStatus)
+    }
   }
 
   return(
-    <CreateTasksContext.Provider value={{dadosLocal,setDadosLocal, newTask, setNewTask, setDados, deleteItem}}>
+    <CreateTasksContext.Provider value={{dadosLocal,setDadosLocal, newTask, setNewTask, setDados, deleteItem, checkTask}}>
       {children}
     </CreateTasksContext.Provider>
   )
