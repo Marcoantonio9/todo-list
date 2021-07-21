@@ -17,6 +17,7 @@ export const GlobalTasks = ({children}) => {
     if(newTask.length > 0){
       localStorage.setItem('task', JSON.stringify(newTask))      
     }
+    console.log(newTask)
   }, [newTask])  
   
   function setDados(event){
@@ -35,8 +36,22 @@ export const GlobalTasks = ({children}) => {
     }    
   }
 
+  function deleteItem(task){
+    newTask.splice(newTask.indexOf(task), 1)  
+    console.log(newTask)  
+    
+    let novoArray = newTask
+    setNewTask('')
+    console.log('novo: ', novoArray)
+    setNewTask([novoArray])
+    // // console.log('novo: ', novoArray)
+    // // setNewTask(...newTask, newTask)
+
+
+  }
+
   return(
-    <CreateTasksContext.Provider value={{dadosLocal,setDadosLocal, newTask, setNewTask, setDados}}>
+    <CreateTasksContext.Provider value={{dadosLocal,setDadosLocal, newTask, setNewTask, setDados, deleteItem}}>
       {children}
     </CreateTasksContext.Provider>
   )
