@@ -46,7 +46,7 @@ export const GlobalTasks = ({children}) => {
     if(newTask.length === 1){
       let array = []
       localStorage.setItem('task', JSON.stringify(array))
-      console.log(newTask.length)
+
     }
   }
 
@@ -57,14 +57,14 @@ export const GlobalTasks = ({children}) => {
 
       deleteItem()
       localStorage.setItem('task', newStatus)
-      console.log('mudar para verdadeiro: ', newStatus)
+
     }else if(task.status === true){
       task.status = !task.status
       let newStatus = task
 
       deleteItem()
       localStorage.setItem('task', newStatus)   
-      console.log('mudar para false: ', newStatus)
+
     }
   }
 

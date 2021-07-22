@@ -5,23 +5,6 @@ import { CreateTasksContext } from '../contexts/TasksContext'
 const Tasks = () => {
   const TaskContext = React.useContext(CreateTasksContext)
 
-  // function deleteTask(task){
-  //   TaskContext.newTask.splice(TaskContext.newTask.indexOf(task), 1)
-  
-  //   // let armazenaNovoValor = TaskContext.newTask
-  //   // console.log('nova: ', armazenaNovoValor)
-
-  //   // //localStorage.setItem('task', JSON.stringify(armazenaNovoValor))
-  //   // TaskContext.newTask(armazenaNovoValor)
-
-  //   // console.log(TaskContext.newTask)
-  // }
-
-  React.useEffect(() => {
-    console.log('mudou?')
-  }, [TaskContext.newTask])
-
-
   return (
     <div className="principal">
         {TaskContext.newTask.length === 0 && <h2 className="txt-nenhuma-tarefa">Nenhuma tarefa adicionada.</h2>}

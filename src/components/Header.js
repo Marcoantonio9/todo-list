@@ -7,10 +7,9 @@ const Header = () => {
 
   React.useEffect(() => {
     if(localStorage.getItem('task') !== null){
-      let teste = JSON.parse(localStorage.getItem('task'))
+      let getDados = JSON.parse(localStorage.getItem('task'))
 
-      TaskContext.setNewTask(...TaskContext.newTask, teste)
-      console.log(teste)
+      TaskContext.setNewTask(...TaskContext.newTask, getDados)
     }
   }, [])  
 
