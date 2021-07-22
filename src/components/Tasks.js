@@ -4,7 +4,6 @@ import { CreateTasksContext } from '../contexts/TasksContext'
 
 const Tasks = () => {
   const TaskContext = React.useContext(CreateTasksContext)
-  const [selecionarTask, SetSelecionarTask] = React.useState('')
 
   // function deleteTask(task){
   //   TaskContext.newTask.splice(TaskContext.newTask.indexOf(task), 1)
