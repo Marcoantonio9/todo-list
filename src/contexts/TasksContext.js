@@ -22,7 +22,10 @@ export const GlobalTasks = ({children}) => {
   
   function setDados(event){
     event.preventDefault()
-    if(localStorage.getItem('task') == null){
+    if(dadosLocal.task === ''){
+      alert('Preencha o campo.')
+    }
+    else if(localStorage.getItem('task') == null){
       setNewTask([...newTask, dadosLocal])
       localStorage.setItem('task', JSON.stringify(newTask))
 
