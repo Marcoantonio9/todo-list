@@ -43,15 +43,46 @@ export const GlobalTasks = ({children}) => {
     })  
   }
 
-  function deleteItem(task){
-    const filtrarArray = newTask.filter((todo) => todo !== task)
-    setNewTask(filtrarArray)
-    if(newTask.length === 1){
-      let array = []
-      localStorage.setItem('task', JSON.stringify(array))
+  const [modal, setModal] = React.useState(false)  
+  const [newTaskEdit, setNewTaskEdit] = React.useState({})
+  const [armazenaTask, setArmazenaTask] = React.useState({})
+  const [savedSuccess, setSavedSuccess] = React.useState(false)
+  const inputRef = React.useRef();
 
+  function editTask(task){
+    console.log(task)
+    if(modal === false){
+      setModal(true)
+      setTimeout(() => {
+        inputRef.current.focus();
+      }, 100)
+    }else if(modal === true){
+      setModal(false)
     }
+    setNewTaskEdit(task)
+    setArmazenaTask(task)
   }
+
+  function changeEditTask({target}){
+    setNewTaskEdit(target.value)
+  
+  }
+
+  function saveEditTask(){
+    console.log('aqui armenaza: ', armazenaTask.task)
+    console.log('aqui 2: ', newTaskEdit.task)
+    if(armazenaTask.task !== newTaskEdit.task){
+      deleteItem()
+      armazenaTask.task = newTaskEdit
+      localStorage.setItem('task', armazenaTask)       
+    }
+    setSavedSuccess(true)
+    setTimeout(() => {
+      setSavedSuccess(false)
+    }, 2000)      
+
+  }
+
 
   function checkTask(task){
     if(task.status === false){
@@ -71,8 +102,18 @@ export const GlobalTasks = ({children}) => {
     }
   }
 
+  function deleteItem(task){
+    const filtrarArray = newTask.filter((todo) => todo !== task)
+    setNewTask(filtrarArray)
+    if(newTask.length === 1){
+      let array = []
+      localStorage.setItem('task', JSON.stringify(array))
+
+    }
+  }  
+
   return(
-    <CreateTasksContext.Provider value={{dadosLocal,setDadosLocal, newTask, setNewTask, setDados, deleteItem, checkTask}}>
+    <CreateTasksContext.Provider value={{dadosLocal,setDadosLocal, newTask, setNewTask, setDados, deleteItem, checkTask, modal, setModal, editTask, newTaskEdit, setNewTaskEdit, changeEditTask, saveEditTask, savedSuccess, setSavedSuccess, inputRef}}>
       {children}
     </CreateTasksContext.Provider>
   )
