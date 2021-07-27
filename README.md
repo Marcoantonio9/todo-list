@@ -5,4 +5,4 @@ Utilizei Context API para possibilitar o compartilhamento dos dados entre os com
 
 #
 
-Segue o link do projeto: https://todo-listreact.vercel.app/
+Segue o link do projeto: https://todolistonline.vercel.app/
