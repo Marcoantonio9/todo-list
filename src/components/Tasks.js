@@ -22,11 +22,11 @@ const Tasks = () => {
                   </div> 
 
                   <div className="icones">
-                    <i className="far fa-check-square" style={{color: task.status ? 'green' : 'black'}} onClick={() => TaskContext.checkTask(task)}></i>
+                    <i className="fas fa-check" style={{color: task.status ? 'green' : 'black'}} onClick={() => TaskContext.checkTask(task)}></i>
                   </div>
                  
                   <div className="icones">
-                    <i className="far fa-window-close icon-fechar" onClick={() => TaskContext.deleteItem(task)}></i>
+                    <i className="fas fa-times icon-fechar" onClick={() => TaskContext.deleteItem(task)}></i>
                   </div>
                 </div>
               </div>
